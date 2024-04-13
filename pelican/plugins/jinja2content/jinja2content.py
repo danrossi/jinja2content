@@ -44,6 +44,8 @@ class JinjaContentMixin:
             self.env.globals.update(self.settings["JINJA_GLOBALS"])
         if "JINJA_TEST" in self.settings:
             self.env.tests.update(self.settings["JINJA_TESTS"])
+        #add all settings metadata to globals
+        self.env.globals.update(self.settings)
 
     def read(self, source_path):
         with pelican_open(source_path) as text:
